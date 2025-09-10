@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>UAJY PORTAL</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{ --accent: #f4b400; --card-radius: 12px; }
+    *{ box-sizing: border-box; }
+
+body{
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+
+      background:
+        linear-gradient(rgba(12,45,92,0.45), rgba(26,90,160,0.45)),
+        url('UAJY.jpeg') no-repeat center center fixed;
+      background-size: cover;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
+      padding: 24px;
+    }
+
+    h1{
+      color: #fff;
+      font-weight: 700;
+      margin: 0 0 24px;
+      letter-spacing: 2px;
+      font-size: 32px;
+      opacity: 0;
+      animation: fadeDown .7s ease forwards;
+      animation-delay: 0.15s;
+    }
+
+    .container{
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      border-radius: var(--card-radius);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      overflow: hidden;
+      background: #fff; /* keeps the card readable over the image */
+    }
+
+    .info-box{
+      flex: 1;
+      padding: 30px;
+      color: #222;
+      background: #fff;
+      opacity: 0;
+      transform: translateX(-60px);
+      animation: slideInLeft .8s cubic-bezier(.22,.9,.3,1) forwards;
+      animation-delay: 0.35s;
+    }
+
+    .button-box{
+      flex: 1;
+      padding: 36px;
+      background: var(--accent);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+      opacity: 0;
+      transform: translateX(60px);
+      animation: slideInRight .8s cubic-bezier(.22,.9,.3,1) forwards;
+      animation-delay: 0.6s;
+    }
+
+    .button-box h2{
+      margin: 0 0 14px;
+      text-align: center;
+      font-size: 22px;
+      color: #222;
+    }
+
+    .btn{
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      background: #fff;
+      color: #222;
+      transition: transform .18s ease, box-shadow .18s ease;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: btnIn .45s ease forwards;
+      /* default index 0 if not provided */
+      animation-delay: calc(0.95s + var(--i, 0) * 0.08s);
+    }
+
+    .btn:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    @keyframes slideInLeft{
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideInRight{
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeDown{
+      from { opacity: 0; transform: translateY(-18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes btnIn{
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Mobile */
+    @media (max-width: 768px){
+      .container{ flex-direction: column; width: 100%; }
+      .info-box, .button-box{
+        transform: translateY(30px);
+        animation: fadeInUp .65s ease forwards;
+      }
+      .info-box{ animation-delay: 0.35s; }
+      .button-box{ animation-delay: 0.55s; }
+
+      @keyframes fadeInUp{
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>UAJY PORTAL</h1>
+
+  <div class="container">
+    <div class="info-box">
+      <h3>About this Idea</h3>
+      <p>Ultras Rossoneri Ezra Prasetya
+Faculty of Business and Management Economics
+Student ID (NPM): 250328846
+
+I created this 4-in-1 website to integrate Bookshelf, SIAKAD, SIATMA, SIKMA, and Web Kuliah into a single platform. The purpose is to simplify access, improve efficiency, and save time for students by gathering all essential academic systems in one page. This idea comes from my personal initiative as a student who values practicality and productivity in managing academic activities.</p>
+    </div>
+
+    <div class="button-box">
+      <h2>Quick Access</h2>
+<button class="btn" style="--i:1" onclick="goTo('https://bookshelf.vitalsource.com/')">Bookshelf</button>
+      <button class="btn" style="--i:1" onclick="goTo('https://siakad.uajy.ac.id')">SIAKAD</button>
+      <button class="btn" style="--i:2" onclick="goTo('https://siatma.uajy.ac.id')">SIATMA</button>
+      <button class="btn" style="--i:3" onclick="goTo('https://kuliah.uajy.ac.id')">KULIAH</button>
+      <button class="btn" style="--i:4" onclick="goTo('https://sikma.uajy.ac.id')">SIKMA</button>
+    </div>
+  </div>
+
+  <script>
+    function goTo(url) {
+      setTimeout(() => { window.location.href = url; }, 220);
+    }
+  </script>
+</body>
+</html>
